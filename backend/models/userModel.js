@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 const schema = mongoose.Schema;
-
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
+const validator = require("validator");
+const catchAsyncFunction = require("../middlewares/catchAsyncFunction");
 const userSchema = new schema({
   name: { type: String, required: true },
   gender: {
@@ -9,6 +12,20 @@ const userSchema = new schema({
     required: true,
   },
   hobbies: [String],
+  email: {
+    type: String,
+    required: true,
+    unique: [true, "Email already exists"],
+    validate: [validator.isEmail, "Please enter a valid email"],
+    select: false,
+  },
+  password: {
+    type: String,
+    required: true,
+    minLength: [8, "Password length should be greater or equal to 8"],
+    select: false,
+  },
+
   nature: {
     type: String,
     enum: ["introvert", "extrovert", "ambivert"],
@@ -25,20 +42,42 @@ const userSchema = new schema({
     {
       type: schema.Types.ObjectId,
       ref: "User",
+      select: false,
     },
   ],
   interestOf: [
     {
       type: schema.Types.ObjectId,
       ref: "User",
+      select: false,
     },
   ],
   matches: [
     {
       type: schema.Types.ObjectId,
       ref: "User",
+      select: false,
     },
   ],
 });
+
+userSchema.pre("save", async function (next) {
+  console.log("pre save middleware");
+  if (!this.isModified("password")) {
+    return next();
+  }
+  this.password = await bcrypt.hash(this.password, 10);
+});
+
+userSchema.methods.comparePassword = async function (enteredPassword) {
+  // console.log(this.password);
+  return await bcrypt.compare(enteredPassword, this.password);
+};
+
+userSchema.methods.getJwtToken = function () {
+  return jwt.sign({ id: this._id }, process.env.JWTSECRET, {
+    expiresIn: process.env.JWTEXPIRE,
+  });
+};
 
 module.exports = mongoose.model("User", userSchema);

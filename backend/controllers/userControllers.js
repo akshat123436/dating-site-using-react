@@ -1,15 +1,15 @@
+const { default: mongoose } = require("mongoose");
 const catchAsyncFunction = require("../middlewares/catchAsyncFunction");
 const User = require("../models/userModel");
 const ErrorHandler = require("../utils/errorHandler");
 const sendToken = require("../utils/sendToken");
 module.exports.createUser = catchAsyncFunction(async (req, res) => {
   const newUser = await new User(req.body).save({ validateBforeSave: true });
-  res.status(201).json({ success: true, newUser });
+  sendToken(newUser, 200, res);
 });
 
 module.exports.deleteUser = catchAsyncFunction(async (req, res, next) => {
   const deleteUser = await User.findById(req.params.id);
-  // console.log(deleteUser);
   if (!deleteUser) {
     return next(
       new ErrorHandler(`User with the id : ${req.params.id} was not found`, 404)
@@ -60,3 +60,42 @@ module.exports.login = catchAsyncFunction(async (req, res, next) => {
   }
   sendToken(user, 200, res);
 });
+module.exports.logout = catchAsyncFunction(async (req, res, next) => {
+  res.cookie("token", null, {
+    expires: new Date(Date.now()),
+    httpOnly: true,
+  });
+  res.status(200).json({
+    success: true,
+    message: "Logged Out Successfully",
+  });
+});
+
+module.exports.insertInterestedIn = catchAsyncFunction(
+  async (req, res, next) => {
+    const user = await User.findById(req.user._id).select("+interestedIn");
+    // console.log(user);
+
+    let check = user.interestedIn.reduce((acc, obj) => {
+      return acc || obj.toString() === req.body.id.toString();
+    }, false);
+    // console.log(check);
+    const requestedUser = await User.findById(req.body.id).select(
+      "+interestOf"
+    );
+    if (!requestedUser) {
+      return next(new ErrorHandler("Could not find the user", 404));
+    }
+    if (!check) {
+      user.interestedIn.push(req.body.id);
+      await user.save();
+      requestedUser.interestOf.push(user);
+      await requestedUser.save();
+    } else {
+      return next(
+        new ErrorHandler("User already exists in your interests", 500)
+      );
+    }
+    res.status(200).json({ success: true, user });
+  }
+);

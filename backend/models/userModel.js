@@ -38,20 +38,24 @@ const userSchema = new schema({
   city: { type: String, required: true },
   state: { type: String, required: true },
   country: { type: String, required: true },
-  interestedIn: [
-    {
-      type: schema.Types.ObjectId,
-      ref: "User",
-      select: false,
-    },
-  ],
-  interestOf: [
-    {
-      type: schema.Types.ObjectId,
-      ref: "User",
-      select: false,
-    },
-  ],
+  interestedIn: {
+    type: [
+      {
+        type: schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
+    select: false,
+  },
+  interestOf: {
+    type: [
+      {
+        type: schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
+    select: false,
+  },
   matches: [
     {
       type: schema.Types.ObjectId,
@@ -62,7 +66,7 @@ const userSchema = new schema({
 });
 
 userSchema.pre("save", async function (next) {
-  console.log("pre save middleware");
+  // console.log("pre save middleware");
   if (!this.isModified("password")) {
     return next();
   }

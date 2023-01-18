@@ -56,13 +56,27 @@ const userSchema = new schema({
     ],
     select: false,
   },
-  matches: [
-    {
-      type: schema.Types.ObjectId,
-      ref: "User",
-      select: false,
-    },
-  ],
+  matches: {
+    type: [
+      {
+        type: schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
+    select: false,
+  },
+  instagram: {
+    type: String,
+    select: false,
+  },
+  facebook: {
+    type: String,
+    select: false,
+  },
+  contact: {
+    type: String,
+    select: false,
+  },
 });
 
 userSchema.pre("save", async function (next) {

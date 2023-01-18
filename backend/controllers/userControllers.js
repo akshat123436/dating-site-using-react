@@ -85,17 +85,23 @@ module.exports.insertInterestedIn = catchAsyncFunction(
   async (req, res, next) => {
     const user = await User.findById(req.user._id).select("+interestedIn");
     // console.log(user);
-
+    if (req.user._id.toString() === req.body.id.toString()) {
+      return next(new ErrorHandler("Operation denied", 403));
+    }
     let check = user.interestedIn.reduce((acc, obj) => {
       return acc || obj.toString() === req.body.id.toString();
     }, false);
     // console.log(check);
-    const requestedUser = await User.findById(req.body.id).select(
-      "+interestOf"
-    );
+    const requestedUser = await User.findById(req.body.id)
+      .select("+interestOf")
+      .select("+interestedIn");
     if (!requestedUser) {
       return next(new ErrorHandler("Could not find the user", 404));
     }
+    let match = requestedUser.interestedIn.reduce((acc, obj) => {
+      return acc || obj.toString() === req.user._id.toString();
+    }, false);
+
     if (!check) {
       user.interestedIn.push(req.body.id);
       await user.save();
@@ -106,6 +112,6 @@ module.exports.insertInterestedIn = catchAsyncFunction(
         new ErrorHandler("User already exists in your interests", 500)
       );
     }
-    res.status(200).json({ success: true, user });
+    res.status(200).json({ success: true, user, match });
   }
 );

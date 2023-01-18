@@ -1,11 +1,21 @@
 const { default: mongoose } = require("mongoose");
 const catchAsyncFunction = require("../middlewares/catchAsyncFunction");
 const User = require("../models/userModel");
+const ApiFeature = require("../utils/apiFeatures");
 const ErrorHandler = require("../utils/errorHandler");
 const sendToken = require("../utils/sendToken");
 module.exports.createUser = catchAsyncFunction(async (req, res) => {
   const newUser = await new User(req.body).save({ validateBforeSave: true });
   sendToken(newUser, 200, res);
+});
+
+module.exports.getUsers = catchAsyncFunction(async (req, res) => {
+  // console.log(req.query);
+  const apiFeature = new ApiFeature(User.find(), req.query);
+  // console.log(apiFeature);
+  apiFeature.search().filter(req);
+  const users = await apiFeature.query;
+  res.status(200).json({ success: true, users });
 });
 
 module.exports.deleteUser = catchAsyncFunction(async (req, res, next) => {

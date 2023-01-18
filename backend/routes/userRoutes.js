@@ -4,16 +4,19 @@ const userControllers = require("../controllers/userControllers");
 const authenticateUser = require("../middlewares/authenticateUser");
 router.route("/").post(userControllers.createUser);
 
-router
-  .route("/:id")
-  .put(userControllers.editUser)
-  .delete(authenticateUser, userControllers.deleteUser)
-  .get(userControllers.showUser);
-
 router.post("/login", userControllers.login);
 router.post("/logout", userControllers.logout);
 
 router
   .route("/interestedIn")
   .post(authenticateUser, userControllers.insertInterestedIn);
+
+router.route("/users").get(authenticateUser, userControllers.getUsers);
+
+router
+  .route("/:id")
+  .put(userControllers.editUser)
+  .delete(authenticateUser, userControllers.deleteUser)
+  .get(userControllers.showUser);
+
 module.exports = router;

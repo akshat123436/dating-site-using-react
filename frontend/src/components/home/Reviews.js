@@ -4,9 +4,10 @@ import image from "../../assets/images/user4.jpg";
 import image1 from "../../assets/images/user1.jpg";
 import image2 from "../../assets/images/user2.jpg";
 import image3 from "../../assets/images/user3.jpg";
+import Container from "../UI/Container.js";
 function Reviews() {
   return (
-    <div id="reviews-container" className={styles["reviews-container"]}>
+    <Container>
       <h2>WHAT PEOPLE SAY ABOUT US</h2>
       <div className={styles["reviews-people"]}>
         <div>
@@ -49,7 +50,7 @@ function Reviews() {
           </p>
         </div>
       </div>
-    </div>
+    </Container>
   );
 }
 

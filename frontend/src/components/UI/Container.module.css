@@ -1,0 +1,16 @@
+.container {
+  background: rgba(0, 0, 0, 0.103);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  width: 75%;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 25px auto;
+}
+@media (max-width: 768px) {
+  .container {
+    font-size: 10px;
+    margin: 10px auto;
+    width: 100%;
+  }
+}/*# sourceMappingURL=Container.module.css.map */

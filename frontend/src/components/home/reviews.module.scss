@@ -2,21 +2,6 @@ h2 {
   text-align: center;
 }
 .reviews {
-  &-container {
-    background: rgba(0, 0, 0, 0.103);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
-    width: 75%;
-    border-radius: 5px;
-    padding: 20px;
-    margin: 25px auto;
-    //   padding: 1px;
-    @media (max-width: 768px) {
-      font-size: 10px;
-      margin: 10px auto;
-      width: 100%;
-    }
-  }
   &-people {
     border-radius: inherit;
     height: 70vh;

@@ -1,0 +1,22 @@
+.img {
+  height: 30px;
+  width: 30px;
+  display: block;
+  margin: auto;
+}
+
+.about-div {
+  border-radius: inherit;
+  padding: 30px 100px;
+  color: white;
+  background-image: url("../../assets/images/sad4sugg_date-ideas_625x300_04_July_22.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+@media (max-width: 768px) {
+  .about-div {
+    border-radius: 2px;
+    padding: 2px;
+  }
+}/*# sourceMappingURL=About.module.css.map */

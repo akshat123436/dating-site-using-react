@@ -6,10 +6,13 @@
   border-radius: 5px;
   padding: 20px;
   margin: 25px auto;
+  transition: 1s;
   //   padding: 1px;
   @media (max-width: 768px) {
     font-size: 10px;
     margin: 10px auto;
     width: 100%;
+  }
+  h2 {
   }
 }

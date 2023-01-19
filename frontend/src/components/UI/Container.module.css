@@ -6,6 +6,7 @@
   border-radius: 5px;
   padding: 20px;
   margin: 25px auto;
+  transition: 1s;
 }
 @media (max-width: 768px) {
   .container {

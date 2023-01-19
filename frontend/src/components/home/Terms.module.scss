@@ -1,0 +1,15 @@
+.termsDiv {
+  background-color: white;
+
+  padding: 45px;
+  border-radius: inherit;
+  ul {
+    padding: 0;
+    li {
+      margin: 4px 0px;
+    }
+  }
+  @media (max-width: 768px) {
+    padding: 20px;
+  }
+}

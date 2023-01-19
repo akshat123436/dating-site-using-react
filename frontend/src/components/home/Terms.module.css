@@ -1,0 +1,16 @@
+.termsDiv {
+  background-color: white;
+  padding: 45px;
+  border-radius: inherit;
+}
+.termsDiv ul {
+  padding: 0;
+}
+.termsDiv ul li {
+  margin: 4px 0px;
+}
+@media (max-width: 768px) {
+  .termsDiv {
+    padding: 20px;
+  }
+}/*# sourceMappingURL=Terms.module.css.map */

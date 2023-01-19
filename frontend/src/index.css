@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap");
-
+a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
 * {
   box-sizing: border-box;
 }
@@ -11,6 +15,7 @@ html {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  scroll-behavior: smooth;
 }
 
 body {

@@ -15,7 +15,9 @@
     width: 20%;
     transition: all 0.5s;
     text-align: center;
-    padding: 3vh;
+    a {
+      padding: 3vh;
+    }
     &:hover {
       background: rgba(0, 0, 0, 0.549);
     }

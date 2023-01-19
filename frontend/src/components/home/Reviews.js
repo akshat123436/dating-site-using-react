@@ -7,7 +7,7 @@ import image3 from "../../assets/images/user3.jpg";
 import Container from "../UI/Container.js";
 function Reviews() {
   return (
-    <Container>
+    <Container id="reviews-container">
       <h2>WHAT PEOPLE SAY ABOUT US</h2>
       <div className={styles["reviews-people"]}>
         <div>

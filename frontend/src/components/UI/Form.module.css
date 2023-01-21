@@ -1,0 +1,36 @@
+.form {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  border-radius: inherit;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  padding: 10px;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.formLabel {
+  padding: 15px 0px;
+  margin-top: 40px;
+}
+.formInput {
+  width: 50%;
+  padding: 10px;
+}
+.form button {
+  border: none;
+  padding: 10px;
+  margin: 20px;
+  border-radius: inherit;
+}
+.form button:hover {
+  cursor: pointer;
+}
+@media (max-width: 768px) {
+  .form {
+    padding: 5px;
+    margin-top: 20px;
+    height: 60%;
+  }
+}/*# sourceMappingURL=Form.module.css.map */

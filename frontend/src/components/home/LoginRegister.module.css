@@ -2,11 +2,12 @@
   width: 70%;
   border-radius: inherit;
   margin: auto;
-  background-color: white;
+  background-color: transparent;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
+  height: 30rem;
 }
 @media (max-width: 768px) {
   .signBox {
@@ -15,13 +16,12 @@
 }
 .signButton {
   border-radius: inherit;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 .signButton .buttonBackground {
-  background: url("../../assets/images/kelly-sikkema-_HtKNv8zs5s-unsplash.jpg");
-  background-position: 40% 49%;
-  background-repeat: no-repeat;
-  background-size: 125%;
-  color: white;
+  background-color: white;
+  color: black;
   border: none;
 }
 .signButton button {
@@ -39,11 +39,9 @@
   background-size: 0%;
 }
 .signButton button:hover {
-  background: url("../../assets/images/kelly-sikkema-_HtKNv8zs5s-unsplash.jpg");
-  background-position: 40% 49%;
-  background-repeat: no-repeat;
-  background-size: 125%;
-  color: white;
+  background-color: white;
+  color: black;
+  /* color: white; */
   cursor: pointer;
   border: none;
 }
@@ -51,4 +49,4 @@
   .signButton button {
     padding: 10px;
   }
-}/*# sourceMappingURL=LoginRegister.module.css.map */
+} /*# sourceMappingURL=LoginRegister.module.css.map */

@@ -12,6 +12,7 @@
   "license": "ISC",
   "proxy": "http://192.168.161.114:4000",
   "dependencies": {
+    "axios": "^1.2.3",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.1",
     "cookie-parser": "^1.4.6",

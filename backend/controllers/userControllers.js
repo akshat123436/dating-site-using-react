@@ -72,11 +72,13 @@ module.exports.login = catchAsyncFunction(async (req, res, next) => {
   if (!email || !password) {
     return next(new ErrorHandler("Please Enter email and Password", 400));
   }
+
   const user = await User.findOne({ email: email }).select("+password");
   if (!user) {
     return next(new ErrorHandler("Invalid Email or password", 401));
   }
-  const isPasswordMatched = user.comparePassword(password);
+  const isPasswordMatched = await user.comparePassword(password);
+  // console.log(isPasswordMatched);
 
   if (!isPasswordMatched) {
     return next(new ErrorHandler("Invalid Email or Password", 402));

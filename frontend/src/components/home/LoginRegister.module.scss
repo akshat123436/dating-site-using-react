@@ -1,0 +1,54 @@
+.sign {
+  &Box {
+    width: 70%;
+    border-radius: inherit;
+    margin: auto;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+
+  &Button {
+    border-radius: inherit;
+    .buttonBackground {
+      background: url("../../assets/images/kelly-sikkema-_HtKNv8zs5s-unsplash.jpg");
+      background-position: 40% 49%;
+      background-repeat: no-repeat;
+      background-size: 125%;
+      color: white;
+      border: none;
+    }
+
+    button {
+      border-radius: inherit;
+      border: 2px solid black;
+      padding: 15px;
+      width: 50%;
+      transition: 0.4s;
+      border: 2px solid #878d95;
+      border-top: none;
+      border-bottom: none;
+      background: url("../../assets/images/kelly-sikkema-_HtKNv8zs5s-unsplash.jpg");
+      background-position: 40% 49%;
+      background-repeat: no-repeat;
+      background-size: 0%;
+      &:hover {
+        background: url("../../assets/images/kelly-sikkema-_HtKNv8zs5s-unsplash.jpg");
+        background-position: 40% 49%;
+        background-repeat: no-repeat;
+        background-size: 125%;
+        color: white;
+        cursor: pointer;
+        border: none;
+      }
+      @media (max-width: 768px) {
+        padding: 10px;
+      }
+    }
+  }
+}

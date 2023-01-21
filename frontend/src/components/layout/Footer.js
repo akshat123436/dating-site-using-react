@@ -23,7 +23,7 @@ function Footer() {
           </a>
         </h5>
         <h5>
-          <a href="github.com/akshat123436/">
+          <a href="https://www.github.com/akshat123436/">
             Github <img src={githubIcon} alt="" />
           </a>
         </h5>

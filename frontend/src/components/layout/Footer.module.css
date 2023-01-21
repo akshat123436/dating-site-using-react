@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Roboto&display=swap");
+.footerDiv {
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  color: white;
+  align-items: center;
+  border-radius: 20px;
+  width: 60%;
+  margin: auto;
+  background-color: rgb(0, 0, 0);
+  padding: 5px 85px;
+  padding-bottom: 20px;
+  justify-content: space-between;
+}
+@media (max-width: 768px) {
+  .footerDiv {
+    width: 95%;
+    padding: 0px 15px;
+    padding-bottom: 0px;
+    font-size: 10px;
+  }
+}
+.footerDiv .websiteName {
+  font-family: "Amiri Quran", serif;
+  color: #ee4a4a;
+}
+.footerDiv a {
+  transition: 0.3s;
+}
+.footerDiv a:hover {
+  color: #ee4a4a;
+}
+.footerDiv h2,
+.footerDiv h4,
+.footerDiv h3,
+.footerDiv h5 {
+  margin: 0;
+  text-align: center;
+}
+.footerDiv h5 {
+  margin: 4px;
+  position: relative;
+}
+.footerDiv h3 {
+  margin-top: 18px;
+}
+.footerDiv img {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  margin-left: 5px;
+  bottom: 0;
+}
+@media (max-width: 768px) {
+  .footerDiv img {
+    display: none;
+  }
+}/*# sourceMappingURL=Footer.module.css.map */

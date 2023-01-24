@@ -14,7 +14,7 @@ function Reviews() {
 
       <div className={styles["reviews-people"]}>
         <div>
-          <img src={image} alt="user image" />
+          <img src={image} alt="user" />
           <h3>ALEXANDER THUNDER</h3>
           <p>
             I am just in love with the concept of providing social media handles
@@ -24,7 +24,7 @@ function Reviews() {
           </p>
         </div>
         <div>
-          <img src={image1} alt="user image" />
+          <img src={image1} alt="user" />
           <h3>SAM CURRAN</h3>
           <p>
             I have never seen such a wonderful website in australia, the
@@ -34,7 +34,7 @@ function Reviews() {
           </p>
         </div>
         <div>
-          <img src={image2} alt="user image" />
+          <img src={image2} alt="user" />
           <h3>J FLA</h3>
           <p>
             Married around 2 years ago, I have a kid 7 months old, I am enjoying
@@ -43,7 +43,7 @@ function Reviews() {
           </p>
         </div>
         <div>
-          <img src={image3} alt="user image" />
+          <img src={image3} alt="user" />
           <h3>NORA CURRAN</h3>
           <p>
             I always wanted to date an International cricketer... I found my

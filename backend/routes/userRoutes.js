@@ -4,9 +4,9 @@ const userControllers = require("../controllers/userControllers");
 const authenticateUser = require("../middlewares/authenticateUser");
 router.route("/").post(userControllers.createUser);
 
-router.post("/login", userControllers.login);
+router.post("/login", userControllers.login, authenticateUser);
 router.post("/logout", userControllers.logout);
-
+// router.get("/getCookie", userControllers.getCookie);
 router
   .route("/interestedIn")
   .post(authenticateUser, userControllers.insertInterestedIn)

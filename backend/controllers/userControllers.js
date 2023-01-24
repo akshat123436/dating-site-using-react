@@ -17,7 +17,10 @@ module.exports.getUsers = catchAsyncFunction(async (req, res) => {
   const users = await apiFeature.query;
   res.status(200).json({ success: true, users });
 });
-
+module.exports.getCookie = (req, res) => {
+  console.log(req.cookies);
+  res.status(200).json(req.cookies);
+};
 module.exports.deleteUser = catchAsyncFunction(async (req, res, next) => {
   const deleteUser = await User.findById(req.params.id);
   if (!deleteUser) {
@@ -77,9 +80,10 @@ module.exports.login = catchAsyncFunction(async (req, res, next) => {
   if (!user) {
     return next(new ErrorHandler("Invalid Email or password", 401));
   }
+  console.log(user);
   const isPasswordMatched = await user.comparePassword(password);
   // console.log(isPasswordMatched);
-
+  console.log(isPasswordMatched);
   if (!isPasswordMatched) {
     return next(new ErrorHandler("Invalid Email or Password", 402));
   }

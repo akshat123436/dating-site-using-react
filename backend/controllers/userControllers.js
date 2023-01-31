@@ -71,18 +71,21 @@ module.exports.showUser = catchAsyncFunction(async (req, res, next) => {
 });
 
 module.exports.login = catchAsyncFunction(async (req, res, next) => {
+  console.log("login post request");
+
   const { email, password } = req.body;
   if (!email || !password) {
     return next(new ErrorHandler("Please Enter email and Password", 400));
   }
 
   const user = await User.findOne({ email: email }).select("+password");
+  console.log(user);
+
   if (!user) {
     return next(new ErrorHandler("Invalid Email or password", 401));
   }
   console.log(user);
   const isPasswordMatched = await user.comparePassword(password);
-  // console.log(isPasswordMatched);
   console.log(isPasswordMatched);
   if (!isPasswordMatched) {
     return next(new ErrorHandler("Invalid Email or Password", 402));
@@ -158,7 +161,7 @@ module.exports.getInterestOf = catchAsyncFunction(async (req, res) => {
 });
 
 module.exports.getInterestedIn = catchAsyncFunction(async (req, res) => {
-  // console.log(req.user);
+  console.log("getInterestedIn called");
   const user = await User.findById(req.user._id)
     .select("+interestedIn")
     .populate("interestedIn");

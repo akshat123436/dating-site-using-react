@@ -1,11 +1,13 @@
 import React, { useRef, Fragment } from "react";
 import Form from "../UI/Form.js";
 import styles from "../UI/Form.module.css";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { loginStateActions } from "../../store/loginSlice.js";
 import axios from "axios";
+axios.defaults.withCredentials = true;
+
 function LoginForm() {
-  const login = useSelector((state) => state.loginState.login);
+  // const login = useSelector((state) => state.loginState.login);
   const dispatch = useDispatch();
   const emailRef = useRef();
   const passwordRef = useRef();

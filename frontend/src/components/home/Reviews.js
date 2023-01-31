@@ -5,7 +5,7 @@ import image1 from "../../assets/images/user1.jpg";
 import image2 from "../../assets/images/user2.jpg";
 import image3 from "../../assets/images/user3.jpg";
 import Container from "../UI/Container.js";
-import ScrollAnimation from "react-animate-on-scroll";
+// import ScrollAnimation from "react-animate-on-scroll";
 import "animate.css/animate.min.css";
 function Reviews() {
   return (
